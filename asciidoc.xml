@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<!DOCTYPE MODE SYSTEM "xmode.dtd">
+
+<MODE>
+    <PROPS>
+        <PROPERTY NAME="commentStart" VALUE="/*" />
+        <PROPERTY NAME="commentEnd" VALUE="*/" />
+        <PROPERTY NAME="lineComment" VALUE="//" />
+        <PROPERTY NAME="contextInsensitive" VALUE="FALSE" />
+    </PROPS>
+
+    <RULES>
+    	<!-- One line titles -->
+    	<EOL_SPAN AT_WHITESPACE_END="TRUE" TYPE="KEYWORD4">===== </EOL_SPAN>
+    	<EOL_SPAN AT_WHITESPACE_END="TRUE" TYPE="KEYWORD3">==== </EOL_SPAN>
+    	<EOL_SPAN AT_WHITESPACE_END="TRUE" TYPE="KEYWORD2">=== </EOL_SPAN>
+    	<EOL_SPAN AT_WHITESPACE_END="TRUE" TYPE="KEYWORD1">== </EOL_SPAN>
+    	<EOL_SPAN AT_WHITESPACE_END="TRUE" TYPE="MARKUP">= </EOL_SPAN>
+    	
+    	<!-- Comment blocks -->
+    	<SPAN_REGEXP TYPE="COMMENT2" HASH_CHAR="////" AT_LINE_START="TRUE">
+    		<BEGIN AT_LINE_START="TRUE">^\/\/\/\/+\s*$</BEGIN>
+    		<END REGEXP="TRUE">\/\/\/\/\s*$</END>
+    	</SPAN_REGEXP>
+    	<EOL_SPAN TYPE="COMMENT3" AT_WORD_START="TRUE">//</EOL_SPAN>
+    	<!-- Source blocks -->
+    	<SPAN_REGEXP TYPE="LITERAL1" HASH_CHAR="----" AT_LINE_START="TRUE">
+    		<BEGIN AT_LINE_START="TRUE">^----+\s*$</BEGIN>
+    		<END REGEXP="TRUE">----\s*$</END>
+    	</SPAN_REGEXP>
+    	<!-- Passthrough blocks -->
+    	<SPAN_REGEXP TYPE="LITERAL2" HASH_CHAR="++++" AT_LINE_START="TRUE">
+    		<BEGIN AT_LINE_START="TRUE">^\+\+\+\++\s*$</BEGIN>
+    		<END REGEXP="TRUE">\+\+\+\+\s*$</END>
+    	</SPAN_REGEXP>
+    	<!-- Literal blocks -->
+    	<SPAN_REGEXP TYPE="LITERAL3" HASH_CHAR="...." AT_LINE_START="TRUE">
+    		<BEGIN AT_LINE_START="TRUE">^\.\.\.\.+\s*$</BEGIN>
+    		<END REGEXP="TRUE">\.\.\.\.\s*$</END>
+    	</SPAN_REGEXP>
+    	<!-- Sidebar blocks -->
+    	<SPAN_REGEXP TYPE="LITERAL4" HASH_CHAR="****" AT_LINE_START="TRUE">
+    		<BEGIN AT_LINE_START="TRUE">^\*\*\*\*+\s*$</BEGIN>
+    		<END REGEXP="TRUE">\*\*\*\*\s*$</END>
+    	</SPAN_REGEXP>
+    	<!-- Quote blocks -->
+    	<SPAN_REGEXP TYPE="COMMENT4" HASH_CHAR="____" AT_LINE_START="TRUE">
+    		<BEGIN AT_LINE_START="TRUE">^____+\s*$</BEGIN>
+    		<END REGEXP="TRUE">____\s*$</END>
+    	</SPAN_REGEXP>
+    	
+    	<!-- Two line titles -->
+        <SPAN_REGEXP TYPE="MARKUP" HASH_CHARS="=">
+        	<BEGIN AT_LINE_START="TRUE">===</BEGIN>
+        	<END REGEXP="TRUE">=+$</END>
+        </SPAN_REGEXP>
+        <SPAN_REGEXP TYPE="KEYWORD1" HASH_CHARS="-">
+        	<BEGIN AT_LINE_START="TRUE">-{3}</BEGIN>
+        	<END REGEXP="TRUE">-+$</END>
+        </SPAN_REGEXP>
+        <SPAN_REGEXP TYPE="KEYWORD2" HASH_CHARS="~">
+        	<BEGIN AT_LINE_START="TRUE">~~~</BEGIN>
+        	<END REGEXP="TRUE">~+$</END>
+        </SPAN_REGEXP>
+        <SPAN_REGEXP TYPE="KEYWORD3" HASH_CHARS="^">
+        	<BEGIN AT_LINE_START="TRUE">\^\^\^</BEGIN>
+        	<END REGEXP="TRUE">\^+$</END>
+        </SPAN_REGEXP>
+        <SPAN_REGEXP TYPE="KEYWORD4" HASH_CHARS="+">
+        	<BEGIN AT_LINE_START="TRUE">\+\+\+</BEGIN>
+        	<END REGEXP="TRUE">\++$</END>
+        </SPAN_REGEXP>
+        
+        <!-- Makros -->
+        <EOL_SPAN_REGEXP TYPE="LABEL" HASH_CHARS="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÖÄÜöäü">^\s*\S+:.+\[</EOL_SPAN_REGEXP>
+        <EOL_SPAN_REGEXP TYPE="LABEL" HASH_CHARS="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÖÄÜöäü">^\s*\S+::.+\[</EOL_SPAN_REGEXP>
+        
+        <!-- Attributes -->
+    	<SPAN TYPE="LABEL" AT_LINE_START="TRUE">
+    		<BEGIN>[[</BEGIN>
+    		<END>]]</END>
+    	</SPAN>
+    	<SPAN TYPE="LABEL" AT_LINE_START="TRUE">
+    		<BEGIN>[</BEGIN>
+    		<END>]</END>
+    	</SPAN>
+    	<EOL_SPAN_REGEXP TYPE="LITERAL1" HASH_CHAR=":">^:.{1,20}:</EOL_SPAN_REGEXP>
+    	
+    	<!-- Tables -->
+    	<SPAN_REGEXP TYPE="MARKUP" HASH_CHAR="|=">
+    		<BEGIN>^(\|====+)</BEGIN>
+    		<END>====</END>
+    	</SPAN_REGEXP>
+    	
+    	<KEYWORDS>
+    		<KEYWORD1>image</KEYWORD1>
+    		<KEYWORD1>include</KEYWORD1>
+    		<KEYWORD1>sys</KEYWORD1>
+    		<KEYWORD1>sys2</KEYWORD1>
+    		<KEYWORD1>eval</KEYWORD1>
+    		<KEYWORD2>pass</KEYWORD2>
+    		<KEYWORD2>latexmath</KEYWORD2>
+    		<KEYWORD2>asciimath</KEYWORD2>
+    		<KEYWORD2>indexterm</KEYWORD2>
+    		<KEYWORD2>indexterm2|</KEYWORD2>
+    		<KEYWORD2>footnote</KEYWORD2>
+    		<KEYWORD2>footnoteref</KEYWORD2>
+    		<KEYWORD3>ifdef</KEYWORD3>
+    		<KEYWORD3>ifndef</KEYWORD3>
+    		<KEYWORD3>endif</KEYWORD3>
+    		<KEYWORD3>unfloat</KEYWORD3>
+    		<KEYWORD3>template</KEYWORD3>
+    	</KEYWORDS>
+    </RULES>
+</MODE>
+
