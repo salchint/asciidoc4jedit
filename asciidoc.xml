@@ -115,7 +115,7 @@
     	</SPAN_REGEXP>
     	<!-- Strong text -->
     	<SPAN_REGEXP TYPE="KEYWORD1">
-    		<BEGIN>[\s\.,\(]\*\S</BEGIN>
+    		<BEGIN>[\s\.,\(]\*[^\*\s]</BEGIN>
     		<END>*</END>
     	</SPAN_REGEXP>
     	<!-- Monospaced text -->
