@@ -98,10 +98,12 @@
     	<EOL_SPAN_REGEXP TYPE="LITERAL1" HASH_CHAR=":">^:.{1,20}:</EOL_SPAN_REGEXP>
     	
     	<!-- Tables -->
+    	<!-- 
     	<SPAN_REGEXP TYPE="MARKUP" HASH_CHAR="|=">
     		<BEGIN>^(\|====+)</BEGIN>
     		<END>====</END>
     	</SPAN_REGEXP>
+    	-->
     	
     	<!-- Text formatting -->
     	<!-- Emphasized text -->
@@ -146,6 +148,10 @@
 
     	<!-- Block titles -->
     	<EOL_SPAN_REGEXP TYPE="LABEL" AT_LINE_START="TRUE" HASH_CHAR=".">^\.\S</EOL_SPAN_REGEXP>
+    	
+    	<!-- Tables -->
+    	<EOL_SPAN TYPE="OPERATOR" AT_LINE_START="TRUE">|==</EOL_SPAN>
+    	<MARK_FOLLOWING TYPE="DIGIT" AT_WORD_START="TRUE" MATCH_TYPE="OPERATOR">|</MARK_FOLLOWING>
     	
     	<KEYWORDS>
     		<KEYWORD1>image</KEYWORD1>
