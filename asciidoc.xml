@@ -6,17 +6,27 @@
         <PROPERTY NAME="commentStart" VALUE="/*" />
         <PROPERTY NAME="commentEnd" VALUE="*/" />
         <PROPERTY NAME="lineComment" VALUE="//" />
-        <PROPERTY NAME="contextInsensitive" VALUE="FALSE" />
+        <PROPERTY NAME="contextInsensitive" VALUE="true" />
     </PROPS>
 
     <RULES>
     	<!-- One line titles -->
-    	<EOL_SPAN AT_WHITESPACE_END="TRUE" TYPE="KEYWORD4">===== </EOL_SPAN>
-    	<EOL_SPAN AT_WHITESPACE_END="TRUE" TYPE="KEYWORD3">==== </EOL_SPAN>
-    	<EOL_SPAN AT_WHITESPACE_END="TRUE" TYPE="KEYWORD2">=== </EOL_SPAN>
-    	<EOL_SPAN AT_WHITESPACE_END="TRUE" TYPE="KEYWORD1">== </EOL_SPAN>
-    	<EOL_SPAN AT_WHITESPACE_END="TRUE" TYPE="MARKUP">= </EOL_SPAN>
+    	<EOL_SPAN AT_LINE_START="TRUE" TYPE="FUNCTION">===== </EOL_SPAN>
+    	<EOL_SPAN AT_LINE_START="TRUE" TYPE="FUNCTION">==== </EOL_SPAN>
+    	<EOL_SPAN AT_LINE_START="TRUE" TYPE="FUNCTION">=== </EOL_SPAN>
+    	<EOL_SPAN AT_LINE_START="TRUE" TYPE="FUNCTION">== </EOL_SPAN>
+    	<EOL_SPAN AT_LINE_START="TRUE" TYPE="FUNCTION">= </EOL_SPAN>
     	
+    	<!-- Two line titles ^[^. +/].*[^.:]\n[-=~^+]\{2,}$ -->
+    	<!-- SPAN_REGEXP TYPE="INVALID">
+    		<BEGIN AT_LINE_START="true">^AsciiDoc User</BEGIN>
+    		<END REGEXP="true">====$</END>
+    	</SPAN_REGEXP -->
+    	<EOL_SPAN_REGEXP TYPE="FUNCTION" HASH_CHARS="=-" AT_LINE_START="TRUE">^[=-]{4,}</EOL_SPAN_REGEXP>
+    	<EOL_SPAN TYPE="FUNCTION" AT_LINE_START="TRUE">~~~~</EOL_SPAN>
+    	<EOL_SPAN TYPE="FUNCTION" AT_LINE_START="TRUE">^^^^</EOL_SPAN>
+    	<EOL_SPAN TYPE="FUNCTION" AT_LINE_START="TRUE">++++</EOL_SPAN>
+
     	<!-- Comment blocks -->
     	<SPAN_REGEXP TYPE="COMMENT2" HASH_CHAR="////" AT_LINE_START="TRUE">
     		<BEGIN AT_LINE_START="TRUE">^\/\/\/\/+\s*$</BEGIN>
@@ -49,7 +59,7 @@
     		<END REGEXP="TRUE">____\s*$</END>
     	</SPAN_REGEXP>
     	
-    	<!-- Two line titles -->
+    	<!-- Two line titles 
         <SPAN_REGEXP TYPE="MARKUP" HASH_CHARS="=">
         	<BEGIN AT_LINE_START="TRUE">===</BEGIN>
         	<END REGEXP="TRUE">=+$</END>
@@ -70,6 +80,7 @@
         	<BEGIN AT_LINE_START="TRUE">\+\+\+</BEGIN>
         	<END REGEXP="TRUE">\++$</END>
         </SPAN_REGEXP>
+        -->
         
         <!-- Makros -->
         <EOL_SPAN_REGEXP TYPE="LABEL" HASH_CHARS="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÖÄÜöäü">^\s*\S+:.+\[</EOL_SPAN_REGEXP>
@@ -91,6 +102,50 @@
     		<BEGIN>^(\|====+)</BEGIN>
     		<END>====</END>
     	</SPAN_REGEXP>
+    	
+    	<!-- Text formatting -->
+    	<!-- Emphasized text -->
+    	<SPAN_REGEXP TYPE="COMMENT1">
+    		<BEGIN>[\s\.,\(\)\[\]]_\S</BEGIN>
+    		<END>_</END>
+    	</SPAN_REGEXP>
+    	<SPAN_REGEXP TYPE="COMMENT1">
+    		<BEGIN>[\s\.,\(\)\[\]]'\S</BEGIN>
+    		<END>'</END>
+    	</SPAN_REGEXP>
+    	<!-- Strong text -->
+    	<SPAN_REGEXP TYPE="KEYWORD1">
+    		<BEGIN>[\s\.,\(]\*\S</BEGIN>
+    		<END>*</END>
+    	</SPAN_REGEXP>
+    	<!-- Monospaced text -->
+    	<SPAN_REGEXP TYPE="KEYWORD2">
+    		<BEGIN>[\s\.,\(]\+\S</BEGIN>
+    		<END>+</END>
+    	</SPAN_REGEXP>
+    	
+    	<!-- Bulleted lists -->
+    	<SEQ TYPE="FUNCTION" AT_LINE_START="TRUE">- </SEQ>
+    	<SEQ TYPE="FUNCTION" AT_LINE_START="TRUE">* </SEQ>
+    	<SEQ TYPE="FUNCTION" AT_LINE_START="TRUE">** </SEQ>
+    	<SEQ TYPE="FUNCTION" AT_LINE_START="TRUE">*** </SEQ>
+    	<SEQ TYPE="FUNCTION" AT_LINE_START="TRUE">**** </SEQ>
+    	<SEQ TYPE="FUNCTION" AT_LINE_START="TRUE">***** </SEQ>
+    	
+    	<!-- Numbered lists -->
+    	<SEQ TYPE="FUNCTION" AT_LINE_START="TRUE">. </SEQ>
+    	<SEQ TYPE="FUNCTION" AT_LINE_START="TRUE">.. </SEQ>
+    	<SEQ TYPE="FUNCTION" AT_LINE_START="TRUE">... </SEQ>
+    	<SEQ TYPE="FUNCTION" AT_LINE_START="TRUE">.... </SEQ>
+    	<SEQ TYPE="FUNCTION" AT_LINE_START="TRUE">..... </SEQ>
+    	
+    	<!-- Definitions -->
+    	<MARK_PREVIOUS AT_WHITESPACE_END="TRUE" TYPE="COMMENT4">::</MARK_PREVIOUS>    	
+    	<MARK_PREVIOUS AT_WHITESPACE_END="TRUE" TYPE="COMMENT4">:::</MARK_PREVIOUS>    	
+    	<MARK_PREVIOUS AT_WHITESPACE_END="TRUE" TYPE="COMMENT4">::::</MARK_PREVIOUS>    	
+
+    	<!-- Block titles -->
+    	<EOL_SPAN_REGEXP TYPE="LABEL" AT_LINE_START="TRUE" HASH_CHAR=".">^\.\S</EOL_SPAN_REGEXP>
     	
     	<KEYWORDS>
     		<KEYWORD1>image</KEYWORD1>
