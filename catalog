@@ -6,6 +6,6 @@
 <!-- Add lines like the following, one for each edit mode you add: -->
 <!-- <MODE NAME="foo" FILE="foo.xml" FILE_NAME_GLOB="*.foo" /> -->
 
-<MODE NAME="asciidoc" FILE="asciidoc.xml" FILE_NAME_GLOB="*.txt" />
+<MODE NAME="asciidoc" FILE="asciidoc.xml" FILE_NAME_GLOB="*.{txt,asciidoc}" />
 
 </MODES>
