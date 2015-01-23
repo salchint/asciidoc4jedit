@@ -167,18 +167,30 @@
     	<EOL_SPAN TYPE="OPERATOR" AT_LINE_START="TRUE">|==</EOL_SPAN>
     	<MARK_FOLLOWING TYPE="DIGIT" AT_WORD_START="TRUE" MATCH_TYPE="OPERATOR">|</MARK_FOLLOWING>
     	
+    	<!-- Admonition paragraphs -->
+    	<SPAN TYPE="FUNCTION" AT_LINE_START="TRUE">
+    		<BEGIN>NOTE:</BEGIN>
+    		<END> </END>
+    	</SPAN>
+    	
+    	<!-- Indexes -->
+    	<SPAN TYPE="FUNCTION">
+    		<BEGIN>(((</BEGIN>
+    		<END>)))</END>
+    	</SPAN>
+    	
     	<KEYWORDS>
-    		<KEYWORD1>image</KEYWORD1>
-    		<KEYWORD1>include</KEYWORD1>
+    		<KEYWORD1>image:</KEYWORD1>
+    		<KEYWORD1>include:</KEYWORD1>
     		<KEYWORD1>sys</KEYWORD1>
     		<KEYWORD1>sys2</KEYWORD1>
     		<KEYWORD1>eval</KEYWORD1>
-    		<KEYWORD2>pass</KEYWORD2>
+    		<KEYWORD2>pass:</KEYWORD2>
     		<KEYWORD2>latexmath</KEYWORD2>
     		<KEYWORD2>asciimath</KEYWORD2>
-    		<KEYWORD2>indexterm</KEYWORD2>
+    		<KEYWORD2>indexterm:</KEYWORD2>
     		<KEYWORD2>indexterm2|</KEYWORD2>
-    		<KEYWORD2>footnote</KEYWORD2>
+    		<KEYWORD2>footnote:</KEYWORD2>
     		<KEYWORD2>footnoteref</KEYWORD2>
     		<KEYWORD3>ifdef</KEYWORD3>
     		<KEYWORD3>ifndef</KEYWORD3>
