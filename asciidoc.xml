@@ -80,23 +80,27 @@
         	<BEGIN AT_LINE_START="TRUE">\+\+\+</BEGIN>
         	<END REGEXP="TRUE">\++$</END>
         </SPAN_REGEXP>
-        -->
-        
-        <!-- Makros -->
-        <EOL_SPAN_REGEXP TYPE="LABEL" HASH_CHARS="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÖÄÜöäü">^\s*\S+:.+\[</EOL_SPAN_REGEXP>
-        <EOL_SPAN_REGEXP TYPE="LABEL" HASH_CHARS="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÖÄÜöäü">^\s*\S+::.+\[</EOL_SPAN_REGEXP>
-        
-        <!-- Attributes -->
-    	<SPAN TYPE="LABEL" AT_LINE_START="TRUE">
-    		<BEGIN>[[</BEGIN>
-    		<END>]]</END>
-    	</SPAN>
-    	<SPAN TYPE="LABEL" AT_LINE_START="TRUE">
-    		<BEGIN>[</BEGIN>
-    		<END>]</END>
-    	</SPAN>
-    	<EOL_SPAN_REGEXP TYPE="LITERAL1" HASH_CHAR=":">^:.{1,20}:</EOL_SPAN_REGEXP>
-    	
+      -->
+      
+      <!-- Makros -->
+      <EOL_SPAN_REGEXP TYPE="LABEL" HASH_CHARS="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÖÄÜöäü">^\s*\S+:.+\[</EOL_SPAN_REGEXP>
+      <EOL_SPAN_REGEXP TYPE="LABEL" HASH_CHARS="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÖÄÜöäü">^\s*\S+::.+\[</EOL_SPAN_REGEXP>
+      
+      <!-- Attributes/BlockIds -->
+      <SPAN TYPE="LABEL" AT_LINE_START="TRUE">
+        <BEGIN>[[</BEGIN>
+        <END>]]</END>
+      </SPAN>
+      <SPAN TYPE="LABEL">
+        <BEGIN>&lt;&lt;</BEGIN>
+        <END>&gt;&gt;</END>
+      </SPAN>
+      <SPAN TYPE="FUNCTION" AT_LINE_START="TRUE">
+        <BEGIN>[</BEGIN>
+        <END>]</END>
+      </SPAN>
+      <EOL_SPAN_REGEXP TYPE="LITERAL1" HASH_CHAR=":">^:.{1,20}:</EOL_SPAN_REGEXP>
+
     	<!-- Tables -->
     	<!-- 
     	<SPAN_REGEXP TYPE="MARKUP" HASH_CHAR="|=">
@@ -149,6 +153,12 @@
     	<!-- Block titles -->
     	<EOL_SPAN_REGEXP TYPE="LABEL" AT_LINE_START="TRUE" HASH_CHAR=".">^\.\S</EOL_SPAN_REGEXP>
     	
+      <!-- Admonation paragraphs -->
+      <SPAN_REGEXP TYPE="FUNCTION" AT_LINE_START="TRUE">
+        <BEGIN>\s*NOTE:</BEGIN>
+        <END> </END>
+      </SPAN_REGEXP>
+
     	<!-- Tables -->
     	<EOL_SPAN TYPE="OPERATOR" AT_LINE_START="TRUE">|==</EOL_SPAN>
     	<MARK_FOLLOWING TYPE="DIGIT" AT_WORD_START="TRUE" MATCH_TYPE="OPERATOR">|</MARK_FOLLOWING>
