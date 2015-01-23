@@ -125,6 +125,10 @@
     		<END>*</END>
     	</SPAN_REGEXP>
     	<!-- Monospaced text -->
+    	<SPAN_REGEXP TYPE="KEYWORD2" HASH_CHARS=" .,(">
+    		<BEGIN>[\s\.,\(]`\S</BEGIN>
+    		<END>`</END>
+    	</SPAN_REGEXP>
     	<SPAN_REGEXP TYPE="KEYWORD2">
     		<BEGIN>[\s\.,\(]\+\S</BEGIN>
     		<END>+</END>
