@@ -112,25 +112,25 @@
     	<!-- Text formatting -->
     	<!-- Emphasized text -->
     	<SPAN_REGEXP TYPE="COMMENT1">
-    		<BEGIN>[\s\.,\(\)\[\]]_\S</BEGIN>
+    		<BEGIN>(^|[\s\.,\(\)\[\]])_\S</BEGIN>
     		<END>_</END>
     	</SPAN_REGEXP>
     	<SPAN_REGEXP TYPE="COMMENT1">
-    		<BEGIN>[\s\.,\(\)\[\]]'\S</BEGIN>
+    		<BEGIN>(^|[\s\.,\(\)\[\]])'\S</BEGIN>
     		<END>'</END>
     	</SPAN_REGEXP>
     	<!-- Strong text -->
     	<SPAN_REGEXP TYPE="KEYWORD1">
-    		<BEGIN>[\s\.,\(]\*[^\*\s]</BEGIN>
+    		<BEGIN>(^|[\s\.,\(])\*[^\*\s]</BEGIN>
     		<END>*</END>
     	</SPAN_REGEXP>
     	<!-- Monospaced text -->
     	<SPAN_REGEXP TYPE="KEYWORD2" HASH_CHARS=" .,(">
-    		<BEGIN>[\s\.,\(]`\S</BEGIN>
+    		<BEGIN>(^|[\s\.,\(])`\S</BEGIN>
     		<END>`</END>
     	</SPAN_REGEXP>
     	<SPAN_REGEXP TYPE="KEYWORD2">
-    		<BEGIN>[\s\.,\(]\+\S</BEGIN>
+    		<BEGIN>(^|[\s\.,\(])\+\S</BEGIN>
     		<END>+</END>
     	</SPAN_REGEXP>
     	
